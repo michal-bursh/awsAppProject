@@ -1,0 +1,48 @@
+<!-- <!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>Dashboard</title>
+</head>
+<body>
+    <div>
+        <h1>Hello, {{ current_user.username }}!</h1>
+        <a href="{{ url_for('logout') }}">Logout</a>
+    </div>
+</body>
+</html> -->
+
+<!-- ------------------------------------ -->
+<!-- <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>Dashboard</title>
+</head>
+<body>
+    <div>
+        <h1>Hello, {{ current_user.name }}!</h1>
+        <a href="{{ url_for('logout') }}">Logout</a>
+    </div>
+</body>
+</html> -->
+<!-- ------------------------------------ -->
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard</title>
+</head>
+<body>
+    <div>
+        <h1>Hello, {{ current_user.name }}!</h1>
+        <img src="{{ image_url }}" alt="Image">
+        <a href="{{ url_for('logout') }}">Logout</a>
+    </div>
+</body>
+</html>
