@@ -1,4 +1,3 @@
-
 from flask import Flask, render_template, redirect, url_for, flash, request
 from flask_sqlalchemy import SQLAlchemy
 from flask_login import LoginManager, UserMixin, login_user, login_required, logout_user, current_user
@@ -62,22 +61,15 @@ def dashboard():
 
 @app.route('/display_image')
 def display_image():
-    # Replace 'your-bucket-name' and 'your-image-key' with your actual S3 bucket name and image key
     s3_bucket = 'flask-buck1605'
     image_key = 'imageflask.jpeg'
-
-    # Create an S3 client using the default credentials provider chain
     s3_client = boto3.client('s3')
-
-    # Generate a pre-signed URL for the image
     url = s3_client.generate_presigned_url(
         'get_object',
         Params={'Bucket': s3_bucket, 'Key': image_key},
-        ExpiresIn=3600  # URL expiration time in seconds
+        ExpiresIn=3600
     )
-
-    return render_template('dashbord.html', image_url=url)
-
+    return render_template('dashboard.html', image_url=url)
 
 @app.route('/logout')
 @login_required
@@ -86,4 +78,4 @@ def logout():
     return redirect(url_for('home'))
 
 if __name__ == '__main__':
-    app.run(debug=True, port=5002)
+    app.run(debug=True, host='0.0.0.0', port=5555)
