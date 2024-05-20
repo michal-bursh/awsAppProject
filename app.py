@@ -56,19 +56,13 @@ def login():
 @app.route('/dashboard')
 @login_required
 def dashboard():
-    image_url = "https://flask-buck1605.s3.eu-north-1.amazonaws.com/imageflask.jpeg"
+    image_url = "https://flask-buck2005.s3.eu-central-1.amazonaws.com/imageflask.jpeg"
+                
     return render_template('dashboard.html', image_url=image_url)
 
 @app.route('/display_image')
 def display_image():
-    s3_bucket = 'flask-buck1605'
-    image_key = 'imageflask.jpeg'
     s3_client = boto3.client('s3')
-    url = s3_client.generate_presigned_url(
-        'get_object',
-        Params={'Bucket': s3_bucket, 'Key': image_key},
-        ExpiresIn=3600
-    )
     return render_template('dashboard.html', image_url=url)
 
 @app.route('/logout')
